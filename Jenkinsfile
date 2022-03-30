@@ -1,13 +1,4 @@
 pipeline{
-        agent any  
-        environment{
-	    Docker_tag = getDockerTag()
-        }
-        
-        stages{
-
-
-              stage('Quality Gate Statuc Check'){
 
                agent {
                 docker {
@@ -15,6 +6,9 @@ pipeline{
                 args '-v $HOME/.m2:/root/.m2'
                 }
             }
+	stages{
+
+              stage('Quality Gate Statuc Check'){
                   steps{
                       script{
                       withSonarQubeEnv('sonarserver') { 
