@@ -6,6 +6,7 @@ pipeline{
                 args '-v $HOME/.m2:/root/.m2'
                 }
             }
+	
 	stages{
 
               stage('Quality Gate Statuc Check'){
@@ -20,7 +21,10 @@ pipeline{
                            error "Pipeline aborted due to quality gate failure: ${qg.status}"
                       }
                     }
+			      
 		    sh "mvn clean install"
+			      
+	            }      
                   }
                 }  
               }
