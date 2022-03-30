@@ -1,14 +1,5 @@
 pipeline{
-        agent any  
-        environment{
-	    Docker_tag = getDockerTag()
-        }
-        
-        stages{
-
-
-              stage('Quality Gate Statuc Check'){
-
+	
                agent {
                 docker {
                 image 'maven'
